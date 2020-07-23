@@ -7,6 +7,8 @@ Below are the changes done in the dockerfile to implement caching and reduce siz
 - Image size has come down to ~7.98 MB.
 
 # How to run
+- Clone the code from ```https://github.com/sudhir05/anztechgochallenge.git```
+- Docker deamon should be running in local.
 - Dockerfile can be build using either `build.sh` or simply write - `docker build -t techanz .`
 - Check the size of the image - `docker image list`
 - To run the docker image - `docker run -dit -p 8000:8000 techanz`
