@@ -3,11 +3,18 @@ FROM golang:alpine as techbuilder
 ENV GO111MODULE=on
 
 WORKDIR /app
+
 #Copying required files only
-COPY go.mod main.go go.sum ./
-#Download go dependencies and build go 
-RUN go mod download \
-&& apk update --no-cache \
+COPY go.mod go.sum ./
+
+#Download go dependencies
+RUN go mod download
+
+#Copy application code
+COPY main.go ./
+
+#Build the code
+RUN apk update --no-cache \
 && apk add git \
 && CGO_ENABLED=0 go build -o golang-test .
 
